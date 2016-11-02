@@ -3,7 +3,7 @@
 document.addEventListener("DOMContentLoaded", function() {
 
     if( document.querySelectorAll('.socialfoo').length > 0 ) {
-    	document.querySelectorAll('.socialfoo').forEach(function(el) {
+    	[].forEach.call(document.querySelectorAll('.socialfoo'), function(el) { 
     		
     		var socialfoo_div = document.createElement("div");
     		socialfoo_div.className = 'socialfoo-container';
