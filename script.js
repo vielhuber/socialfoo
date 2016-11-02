@@ -52,21 +52,22 @@ document.addEventListener("DOMContentLoaded", function() {
 				socialfoo_ul.appendChild(socialfoo_item_li);
 			});
 
-			var xhr = new XMLHttpRequest()
+			var xhr = new XMLHttpRequest();
+			xhr.socialfoo_div = socialfoo_div;
 			xhr.open('POST', "script.php", true);
 			xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 			xhr.setRequestHeader("X-Requested-With", "XMLHttpRequest");
-			xhr.onreadystatechange = function () {
-				if (this.readyState != 4 || this.status != 200) return;
+			xhr.onreadystatechange = function() {
+				var self = this;
+				if (self.readyState != 4 || self.status != 200) return;
 				var data = JSON.parse(this.responseText);
 
 				// set total
-				document.querySelector(".total .count").innerHTML = data['total'];
+				self.socialfoo_div.querySelector(".total .count").innerHTML = data['total'];
 
 				// set individual
 				["google", "facebook", "xing", "linkedin", "pinterest"].forEach(function(item) {
-					var socialfoo_item_span = document.querySelector("." + item + " .count");
-					socialfoo_item_span.innerHTML = data[item];
+					self.socialfoo_div.querySelector("." + item + " .count").innerHTML = data[item];
 				});
 			}
 			xhr.send("url="+item_url);
