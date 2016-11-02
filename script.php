@@ -18,7 +18,7 @@ class SocialFoo
       $result["linkedin"] = $this->getCountLinkedIn();
       $result["google"] = $this->getCountGoogle();
       $result["xing"] = $this->getCountXing();
-      $result["total"] = $result["facebook"]["shares"] + $result["pinterest"] + $result["linkedin"] + $result["google"] + $result["xing"];
+      $result["total"] = $result["facebook"] + $result["pinterest"] + $result["linkedin"] + $result["google"] + $result["xing"];
       return $result;
    }
 
