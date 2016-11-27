@@ -12,11 +12,13 @@ class SocialFoo
    public function getCounts()
    {
 
+   		if( !file_exists(realpath(dirname(__FILE__))."/socialfoo.txt") ) { file_put_contents(realpath(dirname(__FILE__))."/socialfoo.txt",json_encode([])); } 
+
    		/* if cached version is available */
-   		if( file_exists(realpath(dirname(__FILE__))."/socialfoo.txt") ) {
-   			$cached = json_decode(file_get_contents(realpath(dirname(__FILE__))."/socialfoo.txt"),true);
-   			if(abs(strtotime('now')-strtotime($cached["timestamp"])) <= (60*60)) { return $cached; }
-   		}
+		$cached = json_decode(file_get_contents(realpath(dirname(__FILE__))."/socialfoo.txt"),true);
+		if(array_key_exists(md5($this->url), $cached)) {
+			if(abs(strtotime('now')-strtotime($cached[md5($this->url)]["timestamp"])) <= (60*60)) { return $cached[md5($this->url)]; }
+		}
 
 		$result = [];
 		$result["url"] = $this->url;
@@ -28,8 +30,10 @@ class SocialFoo
 		$result["xing"] = $this->getCountXing();
 		$result["total"] = $result["facebook"] + $result["pinterest"] + $result["linkedin"] + $result["google"] + $result["xing"];
 
-		/* store cached version */
-		file_put_contents(realpath(dirname(__FILE__))."/socialfoo.txt",json_encode($result));
+		/* store cached version (get again current version, because in the meantime file could be changed) */
+   		$cached = json_decode(file_get_contents(realpath(dirname(__FILE__))."/socialfoo.txt"),true);
+   		$cached[md5($this->url)] = $result;
+		file_put_contents(realpath(dirname(__FILE__))."/socialfoo.txt",json_encode($cached));
 
 		return $result;
    }
