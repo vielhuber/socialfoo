@@ -1,0 +1,1 @@
+{"url":"http:\/\/ard.de","timestamp":"2016-11-27 22:17:29","facebook":11695,"pinterest":1,"linkedin":37,"google":1268,"xing":"1","total":13002}

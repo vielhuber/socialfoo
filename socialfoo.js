@@ -54,7 +54,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 			var xhr = new XMLHttpRequest();
 			xhr.socialfoo_div = socialfoo_div;
-			xhr.open('POST', "script.php", true);
+			xhr.open('POST', "socialfoo.php", true);
 			xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 			xhr.setRequestHeader("X-Requested-With", "XMLHttpRequest");
 			xhr.onreadystatechange = function() {
