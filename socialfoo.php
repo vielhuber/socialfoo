@@ -112,4 +112,3 @@ $socialfoo = new SocialFoo($url);
 $result = $socialfoo->getCounts();
 echo json_encode($result);
 die();
-
