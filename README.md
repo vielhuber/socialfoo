@@ -1,4 +1,4 @@
-# ❤ socialfoo ❤
+# ☘ socialfoo ☘
 
 socialfoo adds social sharing including counts to any website for all major networks.
 
@@ -14,7 +14,7 @@ socialfoo adds social sharing including counts to any website for all major netw
 <script src="socialfoo.js"></script>
 ```
 
-### Usage
+## Usage
 
 ```html
 <div
