@@ -66,8 +66,10 @@ document.addEventListener("DOMContentLoaded", function() {
 				self.socialfoo_div.querySelector(".total .count").innerHTML = data['total'];
 
 				// set individual
-				["google", "facebook", "xing", "linkedin", "pinterest"].forEach(function(item) {
-					self.socialfoo_div.querySelector("." + item + " .count").innerHTML = data[item];
+				['google', 'facebook', 'xing', 'linkedin', 'twitter', 'pinterest'].forEach(function(item) {
+					if( self.socialfoo_div.querySelector("." + item + " .count") !== null ) {
+						self.socialfoo_div.querySelector("." + item + " .count").innerHTML = data[item];
+					}
 				});
 			}
 			xhr.send("url="+item_url);
