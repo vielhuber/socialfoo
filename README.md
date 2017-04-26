@@ -34,7 +34,7 @@ echo '<div class="socialfoo" ';
 	echo 'data-url="'.get_permalink().'" ';
 	echo 'data-title="'.get_the_title().'" ';
 	if( has_post_thumbnail(get_the_ID()) ) {
-		echo 'data-image="'.wp_get_attachment_url( get_post_thumbnail_id(get_the_ID()) ).'" ';
+		echo 'data-image="'.wp_get_attachment_url( get_post_thumbnail_id(get_the_ID()) ).'"';
 	}
 echo '></div>';
 ```
