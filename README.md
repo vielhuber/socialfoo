@@ -13,6 +13,7 @@ socialfoo adds social sharing including counts to any website for all major netw
 ```html
 <script src="socialfoo.js"></script>
 ```
+Also add socialfoo.txt to your .gitignore (if present).
 
 ## Usage
 
