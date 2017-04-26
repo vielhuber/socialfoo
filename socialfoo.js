@@ -42,6 +42,7 @@ document.addEventListener("DOMContentLoaded", function() {
 				var socialfoo_item_span = document.createElement('span');
 				socialfoo_item_li.setAttribute('class',item);
 				socialfoo_item_a.setAttribute('target','_blank');
+				socialfoo_item_a.setAttribute('title',item.toUpperCase());
 				socialfoo_item_a.setAttribute('rel','nofollow');
 				socialfoo_item_a.setAttribute('href',href);
 				socialfoo_item_label.innerHTML = item;
@@ -71,6 +72,12 @@ document.addEventListener("DOMContentLoaded", function() {
 						self.socialfoo_div.querySelector("." + item + " .count").innerHTML = data[item];
 					}
 				});
+
+				// set count
+				self.socialfoo_div.setAttribute('data-cols',self.socialfoo_div.querySelectorAll('li').length-1);
+
+				// show
+				self.socialfoo_div.style.display = 'block';
 			}
 			xhr.send("url="+item_url);
 
