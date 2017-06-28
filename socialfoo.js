@@ -1,13 +1,13 @@
-"use strict";
+'use strict';
 
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener('DOMContentLoaded', function() {
 
     if( document.querySelectorAll('.socialfoo').length > 0 ) {
     	[].forEach.call(document.querySelectorAll('.socialfoo'), function(el) { 
     		
-    		var socialfoo_div = document.createElement("div");
+    		var socialfoo_div = document.createElement('div');
     		socialfoo_div.className = 'socialfoo-container';
-    		var socialfoo_ul = document.createElement("ul");
+    		var socialfoo_ul = document.createElement('ul');
     		socialfoo_div.appendChild(socialfoo_ul);
     		el.parentNode.insertBefore(socialfoo_div, el);
     		el.parentNode.removeChild(el);
@@ -27,8 +27,8 @@ document.addEventListener("DOMContentLoaded", function() {
 			socialfoo_item_total_li.appendChild(socialfoo_item_total_span);
 			socialfoo_ul.appendChild(socialfoo_item_total_li);
 			
-			["google", "facebook", "xing", "linkedin", "twitter", "pinterest", "mail"].forEach(function(item) {
-				var href = "#";
+			['google', 'facebook', 'xing', 'linkedin', 'twitter', 'pinterest', 'mail'].forEach(function(item) {
+				var href = '#';
 				if( item == 'google' ) { href = 'https://plus.google.com/share?url='+encodeURIComponent(item_url)+''; }
 				if( item == 'facebook' ) { href = 'https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(item_url)+''; }
 				if( item == 'xing' ) { href = 'https://www.xing.com/app/user?op=share&amp;url='+encodeURIComponent(item_url)+';title='+encodeURIComponent(item_title)+''; }
@@ -55,21 +55,21 @@ document.addEventListener("DOMContentLoaded", function() {
 
 			var xhr = new XMLHttpRequest();
 			xhr.socialfoo_div = socialfoo_div;
-			xhr.open('POST', "socialfoo.php", true);
-			xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-			xhr.setRequestHeader("X-Requested-With", "XMLHttpRequest");
+			xhr.open('POST', window.location.protocol + '//' + window.location.host + '/socialfoo.php', true);
+			xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+			xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
 			xhr.onreadystatechange = function() {
 				var self = this;
 				if (self.readyState != 4 || self.status != 200) return;
 				var data = JSON.parse(this.responseText);
 
 				// set total
-				self.socialfoo_div.querySelector(".total .count").innerHTML = data['total'];
+				self.socialfoo_div.querySelector('.total .count').innerHTML = data['total'];
 
 				// set individual
 				['google', 'facebook', 'xing', 'linkedin', 'twitter', 'pinterest'].forEach(function(item) {
-					if( self.socialfoo_div.querySelector("." + item + " .count") !== null ) {
-						self.socialfoo_div.querySelector("." + item + " .count").innerHTML = data[item];
+					if( self.socialfoo_div.querySelector('.' + item + ' .count') !== null ) {
+						self.socialfoo_div.querySelector('.' + item + ' .count').innerHTML = data[item];
 					}
 				});
 
@@ -79,7 +79,7 @@ document.addEventListener("DOMContentLoaded", function() {
 				// show
 				self.socialfoo_div.style.display = 'block';
 			}
-			xhr.send("url="+item_url);
+			xhr.send('url='+item_url);
 
     	});
     }
