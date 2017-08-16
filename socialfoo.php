@@ -78,11 +78,14 @@ class SocialFoo
       libxml_use_internal_errors(true);
       $doc->loadHTML($content);
       $doc->saveHTML();
-      $num = $doc->getElementById('aggregateCount')->textContent;
-      if($num != "") {
-         $num = str_replace(".","",$num);
-         $num = str_replace(">","",$num);
-         return intval($num);
+      $num = $doc->getElementById('aggregateCount');
+      if( isset($doc->getElementById('aggregateCount')->textContent) ) {
+         $num = $num->textContent;
+         if($num != "") {
+            $num = str_replace(".","",$num);
+            $num = str_replace(">","",$num);
+            return intval($num);
+         }
       }
       return 0;
    }
