@@ -4,12 +4,12 @@ socialfoo adds social sharing including counts to any website for all major netw
 
 ## networks
 
-* facebook
-* twitter
-* pinterest
-* xing
-* linkedin
-* google+
+* [facebook](https://www.facebook.com/)
+* [twitter](https://www.twitter.com/)
+* [pinterest](https://www.pinterest.com/)
+* [xing](https://www.xing.com/)
+* [linkedin](https://www.linkedin.com/)
+* [google+](https://www.google.com/)
 
 ## benefits
 
@@ -25,18 +25,19 @@ add this script:
 ```html
 <script src="socialfoo.js"></script>
 ```
-if you need basic styling, add css also:
+if you need basic styling:
 ```html
 <link rel="stylesheet" href="socialfoo.css" />
 ```
-also add cached counts to your .gitignore (if present):
+exclude cached counts in your .gitignore:
 ```
 socialfoo.txt
 ```
 
-## Usage
+## usage
 
-plain html
+### plain html
+
 ```html
 <div
     class="socialfoo"
@@ -46,7 +47,8 @@ plain html
 ></div>
 ```
 
-wordpress
+### wordpress
+
 ```php
 echo '<div class="socialfoo" ';
     echo 'data-url="'.get_permalink().'" ';
