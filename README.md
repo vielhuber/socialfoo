@@ -44,7 +44,6 @@ socialfoo.txt
     data-url="http://ard.de"
     data-title="Das ist der Inhalt des Posts"
     data-image="https://vielhuber.de/wp-content/themes/vielhuber/images/about.jpg"
-    data-mode="compact|expanded"
 ></div>
 ```
 
@@ -58,6 +57,5 @@ echo '<div class="socialfoo" ';
     {
     	echo 'data-image="'.wp_get_attachment_url( get_post_thumbnail_id(get_the_ID()) ).'" ';
     }
-    echo 'data-mode="compact|expanded"';
 echo '></div>';
 ```
