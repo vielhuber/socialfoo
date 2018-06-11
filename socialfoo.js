@@ -1,9 +1,12 @@
 'use strict';
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function()
+{
 
-    if( document.querySelectorAll('.socialfoo').length > 0 ) {
-    	[].forEach.call(document.querySelectorAll('.socialfoo'), function(el) { 
+    if( document.querySelectorAll('.socialfoo').length > 0 )
+    {
+    	[].forEach.call(document.querySelectorAll('.socialfoo'), function(el)
+        { 
     		
     		var socialfoo_div = document.createElement('div');
     		socialfoo_div.className = 'socialfoo-container';
@@ -27,7 +30,8 @@ document.addEventListener('DOMContentLoaded', function() {
 			socialfoo_item_total_li.appendChild(socialfoo_item_total_span);
 			socialfoo_ul.appendChild(socialfoo_item_total_li);
 			
-			['google', 'facebook', 'xing', 'linkedin', 'twitter', 'pinterest', 'mail'].forEach(function(item) {
+			['google', 'facebook', 'xing', 'linkedin', 'twitter', 'pinterest', 'mail'].forEach(function(item)
+            {
 				var href = '#';
 				if( item == 'google' ) { href = 'https://plus.google.com/share?url='+encodeURIComponent(item_url)+''; }
 				if( item == 'facebook' ) { href = 'https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(item_url)+''; }
@@ -58,7 +62,8 @@ document.addEventListener('DOMContentLoaded', function() {
 			xhr.open('POST', window.location.protocol + '//' + window.location.host + '/socialfoo.php', true);
 			xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 			xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
-			xhr.onreadystatechange = function() {
+			xhr.onreadystatechange = function()
+            {
 				var self = this;
 				if (self.readyState != 4 || self.status != 200) return;
 				var data = JSON.parse(this.responseText);
