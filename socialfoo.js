@@ -27,6 +27,13 @@ document.addEventListener('DOMContentLoaded', function()
             {
                 if( !el.querySelector('.socialfoo__list').classList.contains('socialfoo__list--active') )
                 {
+                    if( document.querySelectorAll('.socialfoo__list--active').length > 0 )
+                    {
+                        [].forEach.call(document.querySelectorAll('.socialfoo__list--active'), function(siblings__value)
+                        {
+                            siblings__value.classList.remove('socialfoo__list--active');
+                        });
+                    }
                     el.querySelector('.socialfoo__list').classList.add('socialfoo__list--active');
                 }
                 else
