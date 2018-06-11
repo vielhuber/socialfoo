@@ -16,15 +16,23 @@ socialfoo adds social sharing including counts to any website for all major netw
 * no developer accounts needed
 * caches counts for fast load times
 * gdpr compliant
-* works without jQuery
+* works without jquery
 * includes basic styling
 
 ## installation
 
+add this script:
 ```html
 <script src="socialfoo.js"></script>
 ```
-also add socialfoo.txt to your .gitignore (if present).
+if you need basic styling, add css also:
+```html
+<link rel="stylesheet" href="socialfoo.css" />
+```
+also add cached counts to your .gitignore (if present):
+```
+socialfoo.txt
+```
 
 ## Usage
 
