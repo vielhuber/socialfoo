@@ -12,30 +12,30 @@ class SocialFoo
    public function getCounts()
    {
 
-		if( !file_exists(realpath(dirname(__FILE__))."/socialfoo.txt") ) { file_put_contents(realpath(dirname(__FILE__))."/socialfoo.txt",json_encode([])); } 
+        if( !file_exists(realpath(dirname(__FILE__)).'/socialfoo.txt') ) { file_put_contents(realpath(dirname(__FILE__)).'/socialfoo.txt',json_encode([])); } 
 
-		/* if cached version is available */
-		$cached = json_decode(file_get_contents(realpath(dirname(__FILE__))."/socialfoo.txt"),true);
-		if(array_key_exists(md5($this->url), $cached)) {
-			if(abs(strtotime('now')-strtotime($cached[md5($this->url)]["timestamp"])) <= (60*60)) { return $cached[md5($this->url)]; }
-		}
+        /* if cached version is available */
+        $cached = json_decode(file_get_contents(realpath(dirname(__FILE__)).'/socialfoo.txt'),true);
+        if(array_key_exists(md5($this->url), $cached)) {
+            if(abs(strtotime('now')-strtotime($cached[md5($this->url)]['timestamp'])) <= (60*60)) { return $cached[md5($this->url)]; }
+        }
 
-		$result = [];
-		$result["url"] = $this->url;
-		$result["timestamp"] = date('Y-m-d H:i:s');
-		$result["facebook"] = $this->getCountFacebook();
-		$result["pinterest"] = $this->getCountPinterest();
-		$result["linkedin"] = $this->getCountLinkedIn();
-		$result["google"] = $this->getCountGoogle();
-		$result["xing"] = $this->getCountXing();
-		$result["total"] = $result["facebook"] + $result["pinterest"] + $result["linkedin"] + $result["google"] + $result["xing"];
+        $result = [];
+        $result['url'] = $this->url;
+        $result['timestamp'] = date('Y-m-d H:i:s');
+        $result['facebook'] = $this->getCountFacebook();
+        $result['pinterest'] = $this->getCountPinterest();
+        $result['linkedin'] = $this->getCountLinkedIn();
+        $result['google'] = $this->getCountGoogle();
+        $result['xing'] = $this->getCountXing();
+        $result['total'] = $result['facebook'] + $result['pinterest'] + $result['linkedin'] + $result['google'] + $result['xing'];
 
-		/* store cached version (get again current version, because in the meantime file could be changed) */
-		$cached = json_decode(file_get_contents(realpath(dirname(__FILE__))."/socialfoo.txt"),true);
-		$cached[md5($this->url)] = $result;
-		file_put_contents(realpath(dirname(__FILE__))."/socialfoo.txt",json_encode($cached));
+        /* store cached version (get again current version, because in the meantime file could be changed) */
+        $cached = json_decode(file_get_contents(realpath(dirname(__FILE__)).'/socialfoo.txt'),true);
+        $cached[md5($this->url)] = $result;
+        file_put_contents(realpath(dirname(__FILE__)).'/socialfoo.txt',json_encode($cached));
 
-		return $result;
+        return $result;
    }
 
    public function getCountFacebook()
@@ -73,7 +73,7 @@ class SocialFoo
    public function getCountGoogle()
    {
       /* this solution does not use curl or an api key */
-      $content = @file_get_contents("https://plusone.google.com/u/0/_/+1/fastbutton?url=".urlencode($this->url)."&count=true");
+      $content = @file_get_contents('https://plusone.google.com/u/0/_/+1/fastbutton?url='.urlencode($this->url).'&count=true');
       $doc = new DOMdocument();
       libxml_use_internal_errors(true);
       $doc->loadHTML($content);
@@ -81,9 +81,9 @@ class SocialFoo
       $num = $doc->getElementById('aggregateCount');
       if( isset($doc->getElementById('aggregateCount')->textContent) ) {
          $num = $num->textContent;
-         if($num != "") {
-            $num = str_replace(".","",$num);
-            $num = str_replace(">","",$num);
+         if($num != '') {
+            $num = str_replace('.','',$num);
+            $num = str_replace('>','',$num);
             return intval($num);
          }
       }
@@ -93,13 +93,13 @@ class SocialFoo
    public function getCountXing()
    {
       /* this solution does not use curl or an api key */
-      $content = @file_get_contents("https://www.xing-share.com/app/share?op=get_share_button;counter=top;url=".$this->url);
+      $content = @file_get_contents('https://www.xing-share.com/app/share?op=get_share_button;counter=top;url='.$this->url);
       $doc = new DOMdocument();      
       libxml_use_internal_errors(true);
       $doc->saveHTML();
       $doc->loadHTML($content);
       $finder = new DomXPath($doc);
-      $classname = "xing-count";
+      $classname = 'xing-count';
       $spans = $finder->query("//*[contains(@class, '$classname')]");
       if( $spans->length > 0 ) {
          return $spans->item(0)->firstChild->nodeValue;
@@ -109,8 +109,8 @@ class SocialFoo
 
 }
 
-if( !isset($_POST["url"]) || $_POST["url"] == "" ) { die(); }
-$url = strip_tags($_POST["url"]);
+if( !isset($_POST['url']) || $_POST['url'] == '' ) { die(); }
+$url = strip_tags($_POST['url']);
 $socialfoo = new SocialFoo($url);
 $result = $socialfoo->getCounts();
 echo json_encode($result);
