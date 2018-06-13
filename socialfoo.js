@@ -56,7 +56,7 @@ document.addEventListener('DOMContentLoaded', function()
 
                 el.querySelector('.socialfoo__list').insertAdjacentHTML('beforeend',
                     '<li class="socialfoo__list-item socialfoo__list-item--'+item+'">\
-                        <a class="socialfoo__link" target="_blank" title="'+item.toUpperCase()+'" rel="nofollow" href="'+href+'">\
+                        <a class="socialfoo__link"'+((item !== 'mail')?(' target="_blank"'):(''))+' title="'+item.toUpperCase()+'" rel="nofollow" href="'+href+'">\
                             <label class="socialfoo__label">'+item+'</label>\
                             <span class="socialfoo__count"></span>\
                         </a>\
