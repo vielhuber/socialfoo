@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', function()
                 e.preventDefault();
             }, false);
 
-            ['google', 'facebook', 'xing', 'linkedin', 'twitter', 'pinterest', 'mail'].forEach(function(item)
+            ['google', 'facebook', 'xing', 'linkedin', 'twitter', 'pinterest', 'whatsapp', 'mail'].forEach(function(item)
             {
                 var href = '#';
                 if( item == 'google' ) { href = 'https://plus.google.com/share?url='+encodeURIComponent(item_url)+''; }
@@ -51,8 +51,15 @@ document.addEventListener('DOMContentLoaded', function()
                 if( item == 'xing' ) { href = 'https://www.xing.com/app/user?op=share&amp;url='+encodeURIComponent(item_url)+';title='+encodeURIComponent(item_title)+''; }
                 if( item == 'linkedin' ) { href = 'https://www.linkedin.com/shareArticle?mini=true&url='+encodeURIComponent(item_url)+'&title='+encodeURIComponent(item_title)+'&summary=&source='; }
                 if( item == 'twitter' ) { href = 'https://twitter.com/home?status='+encodeURIComponent(item_title+' - '+item_url)+''; }
+                if( item == 'whatsapp' ) { href = 'whatsapp://send?text='+encodeURIComponent(item_title+' - '+item_url)+''; }
                 if( item == 'mail' ) { href = 'mailto:?subject='+item_title+'&body='+item_url+''; }
                 if( item == 'pinterest' ) { if( item_image === null ) { return; } href = 'https://www.pinterest.de/pin/create/button/?url='+encodeURIComponent(item_url)+'&media='+encodeURIComponent(item_image)+'&description='+encodeURIComponent(item_title)+''; }
+
+                // show whatsapp only on mobile
+                if( item == 'whatsapp' && window.innerWidth >= 750 )
+                {
+                    return;
+                }
 
                 el.querySelector('.socialfoo__list').insertAdjacentHTML('beforeend',
                     '<li class="socialfoo__list-item socialfoo__list-item--'+item+'">\
@@ -67,7 +74,10 @@ document.addEventListener('DOMContentLoaded', function()
 
             var xhr = new XMLHttpRequest();
             xhr.el = el;
-            xhr.open('POST', window.location.protocol + '//' + window.location.host + '/wp-content/themes/cornect/socialfoo.php', true);
+            var curScripts = document.getElementsByTagName('script'),
+                curScript = curScripts[curScripts.length-1].src,
+                curPath = curScript.substring(0, curScript.lastIndexOf('/'));
+            xhr.open('POST', curPath+'/socialfoo.php', true);
             xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
             xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
             xhr.onreadystatechange = function()
@@ -95,7 +105,7 @@ document.addEventListener('DOMContentLoaded', function()
                 self.el.querySelector('.socialfoo__list').setAttribute('data-cols',self.el.querySelectorAll('.socialfoo__list-item').length);
 
                 // show
-                self.el.style.display = 'block';
+                self.el.style.display = 'inline-block';
             }
             xhr.send('url='+item_url);
 
