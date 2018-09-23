@@ -22,15 +22,17 @@ socialfoo adds social sharing including counts to any website for all major netw
 
 ## installation
 
-add this script:
+download and extract [master.zip](https://github.com/vielhuber/socialfoo/archive/master.zip) inside a new folder called **socialfoo**.
+
+then add the main script to your website:
 ```html
 <script src="socialfoo.js"></script>
 ```
-if you need basic styling:
+if you need basic styling, also add this:
 ```html
 <link rel="stylesheet" href="socialfoo.css" />
 ```
-exclude cached counts in your .gitignore:
+finally exclude cached counts in your **.gitignore**:
 ```
 socialfoo.txt
 ```
