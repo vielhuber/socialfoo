@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', function()
                 '<div class="socialfoo__inner">\
                     <div class="socialfoo__total">\
                         <span class="socialfoo__total-count"></span>\
-                        <label class="socialfoo__total-label">Likes</label>\
+                        <label class="socialfoo__total-label">Shares</label>\
                     </div>\
                     <a class="socialfoo__list-toggle" href="#">Share</a>\
                     <ul class="socialfoo__list"></ul>\
@@ -74,9 +74,14 @@ document.addEventListener('DOMContentLoaded', function()
 
             var xhr = new XMLHttpRequest();
             xhr.el = el;
-            var curScripts = document.getElementsByTagName('script'),
-                curScript = curScripts[curScripts.length-1].src,
-                curPath = curScript.substring(0, curScript.lastIndexOf('/'));
+            var curPath = '';
+            [].forEach.call(document.getElementsByTagName('script'), function(el)
+            {
+                if( el.src.indexOf('socialfoo') > -1 )
+                {
+                    curPath = el.src.substring(0, el.src.lastIndexOf('/'));
+                }
+            });
             xhr.open('POST', curPath+'/socialfoo.php', true);
             xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
             xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
