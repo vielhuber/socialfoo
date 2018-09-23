@@ -26,15 +26,15 @@ download and extract [master.zip](https://github.com/vielhuber/socialfoo/archive
 
 then add the main script to your website:
 ```html
-<script src="socialfoo.js"></script>
+<script src="socialfoo/socialfoo.js"></script>
 ```
 if you need basic styling, also add this:
 ```html
-<link rel="stylesheet" href="socialfoo.css" />
+<link rel="stylesheet" href="socialfoo/socialfoo.css" />
 ```
 finally exclude cached counts in your **.gitignore**:
 ```
-socialfoo.txt
+socialfoo/socialfoo.txt
 ```
 
 ## usage
