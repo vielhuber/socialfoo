@@ -74,6 +74,7 @@ class SocialFoo
    {
       /* this solution does not use curl or an api key */
       $content = @file_get_contents('https://plusone.google.com/u/0/_/+1/fastbutton?url='.urlencode($this->url).'&count=true');
+      if( $content == '' ) { return 0; }
       $doc = new DOMdocument();
       libxml_use_internal_errors(true);
       $doc->loadHTML($content);
@@ -94,6 +95,7 @@ class SocialFoo
    {
       /* this solution does not use curl or an api key */
       $content = @file_get_contents('https://www.xing-share.com/app/share?op=get_share_button;counter=top;url='.$this->url);
+      if( $content == '' ) { return 0; }
       $doc = new DOMdocument();      
       libxml_use_internal_errors(true);
       $doc->saveHTML();
