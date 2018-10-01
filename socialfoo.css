@@ -51,9 +51,9 @@
     list-style-type: none;
     float: left;
     width: 500px;
-    box-shadow: 0px 0px 0px 2px #fff;
     border-radius: 5px;
     background-color: #fff;
+    box-shadow: 0px 0px 0px 2px transparent;
     float:none;
     position: absolute;
     z-index:40;
@@ -62,7 +62,7 @@
     width:80px;
     margin-top:5px;
     max-height: 0;
-    transition: max-height 0.15s ease-out;
+    transition: max-height 0.15s ease-out, box-shadow 0.25s ease-out;
     overflow: hidden;
 }
 .socialfoo__list:after
@@ -74,7 +74,8 @@
 .socialfoo__list--active
 {
     max-height: 500px;
-    transition: max-height 0.25s ease-in;
+    transition: max-height 0.25s ease-in, box-shadow 0.25s ease-in;
+    box-shadow: 0px 0px 0px 2px #fff;
 }
 .socialfoo__list-item
 {
