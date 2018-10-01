@@ -162,6 +162,7 @@
 
 .socialfoo--grid .socialfoo__list-item {
   margin-right: 2%;
+  margin-bottom: 0;
 }
 
 .socialfoo--grid .socialfoo__list-item:last-child {
