@@ -19,6 +19,7 @@ socialfoo adds social sharing including counts to any website for all major netw
 * gdpr compliant
 * works without jquery
 * includes basic styling
+* multiple layouts available
 
 ## installation
 
@@ -43,7 +44,7 @@ socialfoo/socialfoo.txt
 
 ```html
 <div
-    class="socialfoo"
+    class="socialfoo socialfoo--grid|socialfoo--toggle"
     data-url="http://ard.de"
     data-title="Das ist der Inhalt des Posts"
     data-image="https://vielhuber.de/wp-content/themes/vielhuber/images/about.jpg"
@@ -53,7 +54,7 @@ socialfoo/socialfoo.txt
 ### wordpress
 
 ```php
-echo '<div class="socialfoo" ';
+echo '<div class="socialfoo socialfoo--grid|socialfoo--toggle" ';
     echo 'data-url="'.get_permalink().'" ';
     echo 'data-title="'.get_the_title().'" ';
     if( has_post_thumbnail(get_the_ID()) )

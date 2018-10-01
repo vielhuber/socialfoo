@@ -135,3 +135,71 @@
 {
     display:none;
 }
+
+
+/* alternative layout */
+.socialfoo--grid {
+  width: 100%;
+}
+
+.socialfoo--grid .socialfoo__total {
+  display: none;
+}
+
+.socialfoo--grid .socialfoo__list-toggle {
+  display: none;
+}
+
+.socialfoo--grid .socialfoo__list {
+  width: 100%;
+  right: auto;
+  left: 0;
+  position: relative;
+  margin: 0 0 30px;
+  max-height: none;
+  background-color: transparent;
+}
+
+.socialfoo--grid .socialfoo__list-item {
+  margin-right: 2%;
+}
+
+.socialfoo--grid .socialfoo__list-item:last-child {
+  margin-right: 0;
+}
+
+.socialfoo--grid .socialfoo__list[data-cols='1'] .socialfoo__list-item {
+  width: 100%;
+}
+
+.socialfoo--grid .socialfoo__list[data-cols='2'] .socialfoo__list-item {
+  width: 49%;
+}
+
+.socialfoo--grid .socialfoo__list[data-cols='3'] .socialfoo__list-item {
+  width: 32%;
+}
+
+.socialfoo--grid .socialfoo__list[data-cols='4'] .socialfoo__list-item {
+  width: 23.5%;
+}
+
+.socialfoo--grid .socialfoo__list[data-cols='5'] .socialfoo__list-item {
+  width: 18.4%;
+}
+
+.socialfoo--grid .socialfoo__list[data-cols='6'] .socialfoo__list-item {
+  width: 15%;
+}
+
+.socialfoo--grid .socialfoo__list[data-cols='7'] .socialfoo__list-item {
+  width: 12.57%;
+}
+
+.socialfoo--grid .socialfoo__list[data-cols='8'] .socialfoo__list-item {
+  width: 10.75%;
+}
+
+.socialfoo--grid .socialfoo__list[data-cols='9'] .socialfoo__list-item {
+  width: 9.33%;
+}
