@@ -53,7 +53,12 @@ document.addEventListener('DOMContentLoaded', function()
                 if( item == 'twitter' ) { href = 'https://twitter.com/home?status='+encodeURIComponent(item_title+' - '+item_url)+''; }
                 if( item == 'whatsapp' ) { href = 'whatsapp://send?text='+encodeURIComponent(item_title+' - '+item_url)+''; }
                 if( item == 'mail' ) { href = 'mailto:?subject='+item_title+'&body='+item_url+''; }
-                if( item == 'pinterest' ) { if( item_image === null ) { return; } href = 'https://www.pinterest.de/pin/create/button/?url='+encodeURIComponent(item_url)+'&media='+encodeURIComponent(item_image)+'&description='+encodeURIComponent(item_title)+''; }
+                if( item == 'pinterest' ) {
+                    if( el.getAttribute('data-pinterest-image') !== null ) { item_image = el.getAttribute('data-pinterest-image'); }
+                    if( el.getAttribute('data-pinterest-description') !== null ) { item_title = el.getAttribute('data-pinterest-description'); }
+                    if( item_image === null ) { return; }
+                    href = 'https://www.pinterest.de/pin/create/button/?url='+encodeURIComponent(item_url)+'&media='+encodeURIComponent(item_image)+'&description='+encodeURIComponent(item_title)+'';
+                }
 
                 // show whatsapp only on mobile
                 if( item == 'whatsapp' && window.innerWidth >= 750 )
