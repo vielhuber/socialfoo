@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', function()
                 if( item == 'facebook' ) { href = 'https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(item_url)+''; }
                 if( item == 'xing' ) { href = 'https://www.xing.com/app/user?op=share&amp;url='+encodeURIComponent(item_url)+';title='+encodeURIComponent(item_title)+''; }
                 if( item == 'linkedin' ) { href = 'https://www.linkedin.com/shareArticle?mini=true&url='+encodeURIComponent(item_url)+'&title='+encodeURIComponent(item_title)+'&summary=&source='; }
-                if( item == 'twitter' ) { href = 'https://twitter.com/home?status='+encodeURIComponent(item_title+' - '+item_url)+''; }
+                if( item == 'twitter' ) { href = 'https://twitter.com/intent/tweet?text='+encodeURIComponent(item_title+' - '+item_url)+''; }
                 if( item == 'whatsapp' ) { href = 'whatsapp://send?text='+encodeURIComponent(item_title+' - '+item_url)+''; }
                 if( item == 'mail' ) { href = 'mailto:?subject='+item_title+'&body='+item_url+''; }
                 if( item == 'pinterest' ) {
