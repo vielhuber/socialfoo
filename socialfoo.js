@@ -43,10 +43,9 @@ document.addEventListener('DOMContentLoaded', function()
                 e.preventDefault();
             }, false);
 
-            ['google', 'facebook', 'xing', 'linkedin', 'twitter', 'pinterest', 'whatsapp', 'mail'].forEach(function(item)
+            ['facebook', 'xing', 'linkedin', 'twitter', 'pinterest', 'whatsapp', 'mail'].forEach(function(item)
             {
                 var href = '#';
-                if( item == 'google' ) { href = 'https://plus.google.com/share?url='+encodeURIComponent(item_url)+''; }
                 if( item == 'facebook' ) { href = 'https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(item_url)+''; }
                 if( item == 'xing' ) { href = 'https://www.xing.com/app/user?op=share&amp;url='+encodeURIComponent(item_url)+';title='+encodeURIComponent(item_title)+''; }
                 if( item == 'linkedin' ) { href = 'https://www.linkedin.com/shareArticle?mini=true&url='+encodeURIComponent(item_url)+'&title='+encodeURIComponent(item_title)+'&summary=&source='; }
@@ -103,7 +102,7 @@ document.addEventListener('DOMContentLoaded', function()
                 self.el.querySelector('.socialfoo__total-count').innerHTML = data['total'];
 
                 // set individual
-                ['google', 'facebook', 'xing', 'linkedin', 'twitter', 'pinterest'].forEach(function(network__value)
+                ['facebook', 'xing', 'linkedin', 'twitter', 'pinterest'].forEach(function(network__value)
                 {
                     if( self.el.querySelector('.socialfoo__list-item--' + network__value + ' .socialfoo__count') !== null && data[network__value] !== undefined )
                     {

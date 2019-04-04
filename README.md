@@ -9,7 +9,6 @@ socialfoo adds social sharing including counts to any website for all major netw
 * [pinterest](https://www.pinterest.com/)
 * [xing](https://www.xing.com/)
 * [linkedin](https://www.linkedin.com/)
-* [google+](https://www.google.com/)
 * [whatsapp](https://www.whatsapp.com/)
 
 ## benefits
