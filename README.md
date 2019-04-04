@@ -69,4 +69,4 @@ add the following data attributes to provide special pinterest content:
 ```html
     data-pinterest-image="https://vielhuber.de/wp-content/themes/vielhuber/images/about.jpg"
     data-pinterest-description="Das ist der Inhalt des Posts"
-```html
+```
