@@ -87,4 +87,4 @@ with a working access token. obtaining and integrating such a token is easy:
 -   create a new app
 -   in the settings provide a link to a public privacy page and choose a category
 -   publish the app in the top right corner
--   add your app id and your app secret into `socialfoo/socialfoo.php` (line 6-7)
+-   add your app id and your app secret into `socialfoo/socialfoo.php` (line 7-8)
