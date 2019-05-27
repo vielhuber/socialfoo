@@ -1,1 +1,1 @@
-{"8b5e2c831b46c3bfe3aa18ab7a3db6c7":{"url":"http:\/\/ard.de","timestamp":"2018-09-23 19:47:30","facebook":18744,"pinterest":1,"linkedin":0,"google":0,"xing":"2","total":18747},"565b6239f777ddfe600ee6ee83ab80d0":{"url":"http:\/\/zdf.de","timestamp":"2016-11-27 22:27:32","facebook":541,"pinterest":1,"linkedin":0,"google":9999,"xing":"11","total":10552}}
+{"7f4c919540be6ec81cd37d9e61da6c37":{"url":"https:\/\/stackoverflow.com","timestamp":"2019-05-28 00:02:54","facebook":0,"pinterest":0,"linkedin":0,"xing":"12","total":12}}

@@ -4,35 +4,41 @@ socialfoo adds social sharing including counts to any website for all major netw
 
 ## networks
 
-* [facebook](https://www.facebook.com/)
-* [twitter](https://www.twitter.com/)
-* [pinterest](https://www.pinterest.com/)
-* [xing](https://www.xing.com/)
-* [linkedin](https://www.linkedin.com/)
-* [whatsapp](https://www.whatsapp.com/)
+-   [facebook](https://www.facebook.com/)
+-   [twitter](https://www.twitter.com/)
+-   [pinterest](https://www.pinterest.com/)
+-   [xing](https://www.xing.com/)
+-   [linkedin](https://www.linkedin.com/)
+-   [whatsapp](https://www.whatsapp.com/)
 
 ## benefits
 
-* no developer accounts needed
-* caches counts for fast load times
-* gdpr compliant
-* works without jquery
-* includes basic styling
-* multiple layouts available
+-   gdpr compliant
+-   no dependencies
+-   includes basic styling
+-   multiple layouts available
+-   caches counts for fast loading
+-   support for facebook share count
+-   no developer accounts needed (except facebook)
 
 ## installation
 
 download and extract [master.zip](https://github.com/vielhuber/socialfoo/archive/master.zip) inside a new folder called **socialfoo**.
 
 then add the main script to your website:
+
 ```html
 <script src="socialfoo/socialfoo.js"></script>
 ```
+
 if you need basic styling, also add this:
+
 ```html
 <link rel="stylesheet" href="socialfoo/socialfoo.css" />
 ```
-finally exclude cached counts in your **.gitignore**:
+
+finally exclude the cached counts in your **.gitignore**:
+
 ```
 socialfoo/socialfoo.txt
 ```
@@ -54,19 +60,31 @@ socialfoo/socialfoo.txt
 
 ```php
 echo '<div class="socialfoo socialfoo--grid|socialfoo--toggle" ';
-    echo 'data-url="'.get_permalink().'" ';
-    echo 'data-title="'.get_the_title().'" ';
-    if( has_post_thumbnail(get_the_ID()) )
-    {
-    	echo 'data-image="'.wp_get_attachment_url( get_post_thumbnail_id(get_the_ID()) ).'" ';
-    }
+echo 'data-url="' . get_permalink() . '" ';
+echo 'data-title="' . get_the_title() . '" ';
+if (has_post_thumbnail(get_the_ID())) {
+    echo 'data-image="' . wp_get_attachment_url(get_post_thumbnail_id(get_the_ID())) . '" ';
+}
 echo '></div>';
 ```
 
 ### special pinterest content
 
 add the following data attributes to provide special pinterest content:
+
 ```html
-    data-pinterest-image="https://vielhuber.de/wp-content/themes/vielhuber/images/about.jpg"
-    data-pinterest-description="Das ist der Inhalt des Posts"
+data-pinterest-image="https://vielhuber.de/wp-content/themes/vielhuber/images/about.jpg"
+data-pinterest-description="Das ist der Inhalt des Posts"
 ```
+
+### facebook share count
+
+facebook changed its graph api several times in the past.
+currently it is only possible to gather any data (including the share count)
+with a working access token. obtaining and integrating such a token is easy:
+
+-   login into https://developers.facebook.com/
+-   create a new app
+-   in settings provide a link to a public privacy page and choose a category
+-   publish the app in the top right corner
+-   add your App ID and your App Secret into socialfoo/socialfoo.php (line 6-7)
