@@ -81,7 +81,7 @@ data-pinterest-description="Das ist der Inhalt des Posts"
 
 facebook changed its graph api several times in the past.
 currently it is only possible to gather any data (including the share count)
-with a working access token. obtaining and integrating such a token is easy:
+with a working access token. obtaining and integrating such a token is straightforward:
 
 -   login at https://developers.facebook.com
 -   create a new app
