@@ -83,8 +83,8 @@ facebook changed its graph api several times in the past.
 currently it is only possible to gather any data (including the share count)
 with a working access token. obtaining and integrating such a token is easy:
 
--   login into https://developers.facebook.com/
+-   login at https://developers.facebook.com
 -   create a new app
--   in settings provide a link to a public privacy page and choose a category
+-   in the settings provide a link to a public privacy page and choose a category
 -   publish the app in the top right corner
--   add your App ID and your App Secret into socialfoo/socialfoo.php (line 6-7)
+-   add your app id and your app secret into `socialfoo/socialfoo.php` (line 6-7)
