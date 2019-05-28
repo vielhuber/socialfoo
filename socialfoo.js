@@ -86,7 +86,7 @@ document.addEventListener('DOMContentLoaded', function() {
                             '';
                     }
                     if (item == 'mail') {
-                        href = 'mailto:?subject=' + item_title + '&body=' + item_url + '';
+                        href = 'mailto:?subject=' + item_title + '&body=' + encodeURIComponent(item_url) + '';
                     }
                     if (item == 'pinterest') {
                         if (el.getAttribute('data-pinterest-image') !== null) {
