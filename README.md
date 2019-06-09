@@ -21,6 +21,10 @@ socialfoo adds social sharing including counts to any website for all major netw
 -   support for facebook share count
 -   no developer accounts needed (except facebook)
 
+## requirements
+
+-   [curl](https://curl.haxx.se/) or [allow_url_fopen](https://www.php.net/manual/de/filesystem.configuration.php#ini.allow-url-fopen)
+
 ## installation
 
 download and extract [master.zip](https://github.com/vielhuber/socialfoo/archive/master.zip) inside a new folder called **socialfoo**.

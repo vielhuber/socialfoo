@@ -56,7 +56,7 @@ class SocialFoo
 
     public function getCountFacebook()
     {
-        $api = @file_get_contents(
+        $api = $this->fetch(
             'https://graph.facebook.com/?fields=engagement&id=' .
                 $this->url .
                 '&access_token=' .
@@ -75,7 +75,7 @@ class SocialFoo
 
     public function getCountPinterest()
     {
-        $api = @file_get_contents(
+        $api = $this->fetch(
             'https://api.pinterest.com/v1/urls/count.json?callback%20&url=' . $this->url
         );
         $count = preg_replace('/^receiveCount\((.*)\)$/', '\\1', $api);
@@ -88,7 +88,7 @@ class SocialFoo
 
     public function getCountLinkedIn()
     {
-        $api = @file_get_contents(
+        $api = $this->fetch(
             'https://www.linkedin.com/countserv/count/share?url=' . $this->url . '&format=json'
         );
         $count = json_decode($api);
@@ -101,7 +101,7 @@ class SocialFoo
     public function getCountXing()
     {
         /* this solution does not use curl or an api key */
-        $content = @file_get_contents(
+        $content = $this->fetch(
             'https://www.xing-share.com/app/share?op=get_share_button;counter=top;url=' . $this->url
         );
         if ($content == '') {
@@ -118,6 +118,31 @@ class SocialFoo
             return $spans->item(0)->firstChild->nodeValue;
         }
         return 0;
+    }
+
+    public function fetch($url)
+    {        
+        if(function_exists('curl_version'))
+        {
+            $curl = curl_init();
+            curl_setopt($curl, CURLOPT_URL, $url);
+            curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+            curl_setopt($curl, CURLOPT_HEADER, false);
+            curl_setopt($curl, CURLOPT_CONNECTTIMEOUT, 5);
+            curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false); // don't verify certificate 
+            curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, 2); 
+            $data = curl_exec($curl);
+            curl_close($curl);
+        }
+        elseif(file_get_contents(__FILE__) && ini_get('allow_url_fopen'))
+        {
+            $data = @file_get_contents($url);
+        }
+        else
+        {
+            $data = json_encode([]);
+        }
+        return $data;
     }
 }
 
