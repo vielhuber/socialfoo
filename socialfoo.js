@@ -156,6 +156,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 // set total
                 self.el.querySelector('.socialfoo__total-count').innerHTML = data['total'];
 
+                // set label
+                self.el.querySelector('.socialfoo__total-label').innerHTML = 'Share' + (data['total']!=1?'s':'');
+
                 // set individual
                 ['facebook', 'xing', 'linkedin', 'twitter', 'pinterest'].forEach(function(
                     network__value
