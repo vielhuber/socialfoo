@@ -47,6 +47,8 @@ finally exclude the cached counts in your **.gitignore**:
 socialfoo/socialfoo.txt
 ```
 
+if socialfoo is not able to determine the path of the php script, provide it in `socialfoo.js:140`.
+
 ## usage
 
 ### plain html
