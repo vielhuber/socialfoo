@@ -22,118 +22,103 @@ document.addEventListener('DOMContentLoaded', function() {
             el.querySelector('.socialfoo__list-toggle').addEventListener(
                 'click',
                 function(e) {
-                    if (
-                        !el
-                            .querySelector('.socialfoo__list')
-                            .classList.contains('socialfoo__list--active')
-                    ) {
+                    if (!el.querySelector('.socialfoo__list').classList.contains('socialfoo__list--active')) {
                         if (document.querySelectorAll('.socialfoo__list--active').length > 0) {
-                            [].forEach.call(
-                                document.querySelectorAll('.socialfoo__list--active'),
-                                function(siblings__value) {
-                                    siblings__value.classList.remove('socialfoo__list--active');
-                                }
-                            );
+                            [].forEach.call(document.querySelectorAll('.socialfoo__list--active'), function(
+                                siblings__value
+                            ) {
+                                siblings__value.classList.remove('socialfoo__list--active');
+                            });
                         }
-                        el.querySelector('.socialfoo__list').classList.add(
-                            'socialfoo__list--active'
-                        );
+                        el.querySelector('.socialfoo__list').classList.add('socialfoo__list--active');
                     } else {
-                        el.querySelector('.socialfoo__list').classList.remove(
-                            'socialfoo__list--active'
-                        );
+                        el.querySelector('.socialfoo__list').classList.remove('socialfoo__list--active');
                     }
                     e.preventDefault();
                 },
                 false
             );
 
-            ['facebook', 'xing', 'linkedin', 'twitter', 'pinterest', 'whatsapp', 'mail'].forEach(
-                function(item) {
-                    var href = '#';
-                    if (item == 'facebook') {
-                        href =
-                            'https://www.facebook.com/sharer/sharer.php?u=' +
-                            encodeURIComponent(item_url) +
-                            '';
+            ['facebook', 'xing', 'linkedin', 'twitter', 'pinterest', 'whatsapp', 'mail'].forEach(function(item) {
+                var href = '#';
+                if (item == 'facebook') {
+                    href = 'https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(item_url) + '';
+                }
+                if (item == 'xing') {
+                    href =
+                        'https://www.xing.com/app/user?op=share&amp;url=' +
+                        encodeURIComponent(item_url) +
+                        ';title=' +
+                        encodeURIComponent(item_title) +
+                        '';
+                }
+                if (item == 'linkedin') {
+                    href =
+                        'https://www.linkedin.com/shareArticle?mini=true&url=' +
+                        encodeURIComponent(item_url) +
+                        '&title=' +
+                        encodeURIComponent(item_title) +
+                        '&summary=&source=';
+                }
+                if (item == 'twitter') {
+                    href =
+                        'https://twitter.com/intent/tweet?text=' +
+                        encodeURIComponent(item_title + ' - ' + item_url) +
+                        '';
+                }
+                if (item == 'whatsapp') {
+                    href = 'whatsapp://send?text=' + encodeURIComponent(item_title + ' - ' + item_url) + '';
+                }
+                if (item == 'mail') {
+                    href = 'mailto:?subject=' + item_title + '&body=' + encodeURIComponent(item_url) + '';
+                }
+                if (item == 'pinterest') {
+                    if (el.getAttribute('data-pinterest-image') !== null) {
+                        item_image = el.getAttribute('data-pinterest-image');
                     }
-                    if (item == 'xing') {
-                        href =
-                            'https://www.xing.com/app/user?op=share&amp;url=' +
-                            encodeURIComponent(item_url) +
-                            ';title=' +
-                            encodeURIComponent(item_title) +
-                            '';
+                    if (el.getAttribute('data-pinterest-description') !== null) {
+                        item_title = el.getAttribute('data-pinterest-description');
                     }
-                    if (item == 'linkedin') {
-                        href =
-                            'https://www.linkedin.com/shareArticle?mini=true&url=' +
-                            encodeURIComponent(item_url) +
-                            '&title=' +
-                            encodeURIComponent(item_title) +
-                            '&summary=&source=';
-                    }
-                    if (item == 'twitter') {
-                        href =
-                            'https://twitter.com/intent/tweet?text=' +
-                            encodeURIComponent(item_title + ' - ' + item_url) +
-                            '';
-                    }
-                    if (item == 'whatsapp') {
-                        href =
-                            'whatsapp://send?text=' +
-                            encodeURIComponent(item_title + ' - ' + item_url) +
-                            '';
-                    }
-                    if (item == 'mail') {
-                        href = 'mailto:?subject=' + item_title + '&body=' + encodeURIComponent(item_url) + '';
-                    }
-                    if (item == 'pinterest') {
-                        if (el.getAttribute('data-pinterest-image') !== null) {
-                            item_image = el.getAttribute('data-pinterest-image');
-                        }
-                        if (el.getAttribute('data-pinterest-description') !== null) {
-                            item_title = el.getAttribute('data-pinterest-description');
-                        }
-                        if (item_image === null) {
-                            return;
-                        }
-                        href =
-                            'https://www.pinterest.de/pin/create/button/?url=' +
-                            encodeURIComponent(item_url) +
-                            '&media=' +
-                            encodeURIComponent(item_image) +
-                            '&description=' +
-                            encodeURIComponent(item_title) +
-                            '';
-                    }
-
-                    // show whatsapp only on mobile
-                    if (item == 'whatsapp' && window.innerWidth >= 750) {
+                    if (item_image === null) {
                         return;
                     }
+                    href =
+                        'https://www.pinterest.de/pin/create/button/?url=' +
+                        encodeURIComponent(item_url) +
+                        '&media=' +
+                        encodeURIComponent(item_image) +
+                        '&description=' +
+                        encodeURIComponent(item_title) +
+                        '';
+                }
 
-                    el.querySelector('.socialfoo__list').insertAdjacentHTML(
-                        'beforeend',
-                        '<li class="socialfoo__list-item socialfoo__list-item--' +
-                            item +
-                            '">\
+                // show whatsapp only on mobile
+                if (item == 'whatsapp' && window.innerWidth >= 750) {
+                    return;
+                }
+
+                el.querySelector('.socialfoo__list').insertAdjacentHTML(
+                    'beforeend',
+                    '<li class="socialfoo__list-item socialfoo__list-item--' +
+                        item +
+                        '">\
                         <a class="socialfoo__link"' +
-                            (item !== 'mail' ? ' target="_blank"' : '') +
-                            ' title="' +
-                            item.toUpperCase() +
-                            '" rel="nofollow" href="' +
-                            href +
-                            '">\
+                        (item !== 'mail' ? ' target="_blank" rel="noopener noreferrer"' : '') +
+                        ' title="' +
+                        item.toUpperCase() +
+                        '" rel="nofollow" href="' +
+                        href +
+                        '" aria-label="' +
+                        item +
+                        '">\
                             <label class="socialfoo__label">' +
-                            item +
-                            '</label>\
+                        item +
+                        '</label>\
                             <span class="socialfoo__count"></span>\
                         </a>\
                     </li>'
-                    );
-                }
-            );
+                );
+            });
 
             var xhr = new XMLHttpRequest();
             xhr.el = el;
@@ -157,16 +142,13 @@ document.addEventListener('DOMContentLoaded', function() {
                 self.el.querySelector('.socialfoo__total-count').innerHTML = data['total'];
 
                 // set label
-                self.el.querySelector('.socialfoo__total-label').innerHTML = 'Share' + (data['total']!=1?'s':'');
+                self.el.querySelector('.socialfoo__total-label').innerHTML = 'Share' + (data['total'] != 1 ? 's' : '');
 
                 // set individual
-                ['facebook', 'xing', 'linkedin', 'twitter', 'pinterest'].forEach(function(
-                    network__value
-                ) {
+                ['facebook', 'xing', 'linkedin', 'twitter', 'pinterest'].forEach(function(network__value) {
                     if (
-                        self.el.querySelector(
-                            '.socialfoo__list-item--' + network__value + ' .socialfoo__count'
-                        ) !== null &&
+                        self.el.querySelector('.socialfoo__list-item--' + network__value + ' .socialfoo__count') !==
+                            null &&
                         data[network__value] !== undefined
                     ) {
                         self.el.querySelector(
@@ -178,10 +160,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 // set column count
                 self.el
                     .querySelector('.socialfoo__list')
-                    .setAttribute(
-                        'data-cols',
-                        self.el.querySelectorAll('.socialfoo__list-item').length
-                    );
+                    .setAttribute('data-cols', self.el.querySelectorAll('.socialfoo__list-item').length);
 
                 // show
                 self.el.style.display = 'inline-block';
