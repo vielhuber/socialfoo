@@ -46,11 +46,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
                 if (item == 'xing') {
                     href =
-                        'https://www.xing.com/app/user?op=share&amp;url=' +
-                        encodeURIComponent(item_url) +
-                        ';title=' +
-                        encodeURIComponent(item_title) +
-                        '';
+                        'https://www.xing.com/spi/shares/new?url=' +
+                        encodeURIComponent(item_url);
                 }
                 if (item == 'linkedin') {
                     href =
@@ -62,7 +59,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
                 if (item == 'twitter') {
                     href =
-                        'https://twitter.com/intent/tweet?text=' +
+                        'https://twitter.com/intent/tweet?url=&text=' +
                         encodeURIComponent(item_title + ' - ' + item_url) +
                         '';
                 }
