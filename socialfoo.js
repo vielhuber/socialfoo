@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
                 if (item == 'xing') {
                     href =
-                        'https://www.xing.com/spi/shares/new?url=' +
+                        'https://www.xing.com/app/user?op=share&amp;url=' +
                         encodeURIComponent(item_url);
                 }
                 if (item == 'linkedin') {
